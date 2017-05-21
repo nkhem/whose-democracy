@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  street_address  :string           not null
 #  city            :string           not null
-#  state           :string           not null
+#  state_abbrev    :string           not null
 #  zip_code        :integer          not null
 #  f_name          :string           not null
 #  l_name          :string           not null

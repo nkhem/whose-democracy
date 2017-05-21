@@ -31,7 +31,7 @@ class Api::UsersController < ApplicationController
       :phone_number,
       :street_address,
       :city,
-      :state,
+      :state_abbrev,
       :zip_code,
       :password
     )

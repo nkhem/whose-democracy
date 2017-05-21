@@ -15,7 +15,7 @@ class SessionForm extends React.Component {
       phone_number: '',
       street_address: '',
       city: '',
-      state: '',
+      state_abbrev: '',
       zip_code: '',
       password: ''
     };
@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
       phone_number: '',
       street_address: '',
       city: '',
-      state: '',
+      state_abbrev: '',
       zip_code: '',
       password: ''
     });
@@ -95,9 +95,9 @@ class SessionForm extends React.Component {
               placeholder='city' />
 
             <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.state}
-  						onChange={this.update("state")}
-              placeholder='state' />
+  						value={this.state.state_abbrev}
+  						onChange={this.update("state_abbrev")}
+              placeholder='state_abbrev' />
 
             <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
   						value={this.state.zip_code}

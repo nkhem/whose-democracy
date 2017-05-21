@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  street_address  :string           not null
 #  city            :string           not null
-#  state           :string           not null
+#  state_abbrev    :string           not null
 #  zip_code        :integer          not null
 #  f_name          :string           not null
 #  l_name          :string           not null
@@ -20,7 +20,7 @@
 
 class User < ApplicationRecord
   #columns necessary for finding reps
-  validates :street_address, :city, :state, :zip_code, presence: true
+  validates :street_address, :city, :state_abbrev, :zip_code, presence: true
 
   #columns necessary for filling out contact forms
   validates :f_name, :l_name, :prefix, :email, :phone_number, presence: true
