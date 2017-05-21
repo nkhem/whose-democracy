@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { logout } from '../actions/session_actions';
-import SearchBar from './search_bar.js';
 import Header from './header';
 
 class Home extends React.Component {
@@ -13,8 +12,7 @@ class Home extends React.Component {
         <Header
           loggedIn={this.props.loggedIn}
           logout={ this.props.logout } />
-        <h1>gulp</h1>
-        <SearchBar />
+        <h1>Whose Democracy</h1>
       </div>
     );
   }
