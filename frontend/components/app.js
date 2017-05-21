@@ -1,11 +1,11 @@
 import React from 'react';
-import SiteMap from './site_map';
+import Footer from './footer';
 
 const App = ({ children }) => {
   return (
     <div className='app'>
       { children }
-      <SiteMap />
+      <Footer />
     </div>
   );
 };
