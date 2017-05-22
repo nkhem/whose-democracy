@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LocationForm from './location_form';
+import SelectRepForm from './select_rep_form';
 
 class WriteMyReps extends React.Component {
   constructor(props){
@@ -19,6 +20,7 @@ class WriteMyReps extends React.Component {
       phone_number: ''
 
     };
+
     this.processLocationForm = this.processLocationForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -46,8 +48,14 @@ class WriteMyReps extends React.Component {
 
   processLocationForm(addressData){
     let nextLocalState = this.state;
-    Object.assign(nextLocalState, addressData);
-    console.log('nextLocalState:', nextLocalState);
+    this.setState(Object.assign(nextLocalState, addressData));
+    this.currentStep += 1;
+    document.getElementById('location-form').classList.add('hidden');
+    document.getElementById('select-reps-form').classList.remove('hidden');
+    console.log('processLocationForm, this.state:', this.state);
+  }
+
+  processSelectRepForm(selectRepData){
   }
 
   update(field) {
@@ -56,12 +64,16 @@ class WriteMyReps extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div>
         <h2>Write Your Representatives</h2>
         <LocationForm
           processLocationForm={this.processLocationForm}
+        />
+        <SelectRepForm
+          processSelectRepForm={this.processSelectRepForm}
         />
       </div>
 		);

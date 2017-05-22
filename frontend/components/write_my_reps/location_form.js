@@ -36,6 +36,7 @@ class LocationForm extends React.Component {
   render() {
     return (
 			<form
+        className='location-form'
         onSubmit={this.handleSubmit} id="user-address-form">
 
         <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
