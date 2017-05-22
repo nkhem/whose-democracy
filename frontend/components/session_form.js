@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, signup } from '../actions/session_actions';
-import UserAddressForm from './user_address_form';
 
 import Header from './header';
 
@@ -22,10 +21,6 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
-  }
-
-  processUserAddressForm(user){
-    this.setState({})
   }
 
   handleSubmit(e) {
@@ -64,12 +59,7 @@ class SessionForm extends React.Component {
       <div>
         <Header
           hideSessionBtns={ true }
-          loggedIn={this.props.loggedIn}
-        />
-        <UserAddressForm
-          processUserAddressForm={this.processUserAddressForm}
-          shouldDisplay={true}
-        />
+          loggedIn={this.props.loggedIn} />
   			<div className='main-content'>
           <h3>{this.props.formType}</h3>
   				<form onSubmit={this.handleSubmit} id="new-session-form">
@@ -94,6 +84,26 @@ class SessionForm extends React.Component {
   						onChange={this.update("phone_number")}
               placeholder='phone_number' />
 
+            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
+  						value={this.state.street_address}
+  						onChange={this.update("street_address")}
+              placeholder='street_address' />
+
+            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
+  						value={this.state.city}
+  						onChange={this.update("city")}
+              placeholder='city' />
+
+            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
+  						value={this.state.state_abbrev}
+  						onChange={this.update("state_abbrev")}
+              placeholder='state_abbrev' />
+
+            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
+  						value={this.state.zip_code}
+  						onChange={this.update("zip_code")}
+              placeholder='zip_code' />
+
             <br/>
 
   					<input type="text"
@@ -110,11 +120,7 @@ class SessionForm extends React.Component {
 
   					<br/>
 
-  					<input
-              className='submit-btn'
-              type="submit"
-              value={this.props.formType}
-            />
+  					<input type="submit" value={this.props.formType} />
   				</form>
   			</div>
       </div>
