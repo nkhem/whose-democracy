@@ -50,8 +50,8 @@ class WriteMyReps extends React.Component {
     let nextLocalState = this.state;
     this.setState(Object.assign(nextLocalState, addressData));
     this.currentStep += 1;
-    document.getElementById('location-form').classList.add('hidden');
-    document.getElementById('select-reps-form').classList.remove('hidden');
+    // document.getElementById('location-form').classList.add('hidden');
+    // document.getElementById('select-reps-form').classList.remove('hidden');
     console.log('processLocationForm, this.state:', this.state);
   }
 
