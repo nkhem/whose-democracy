@@ -34,7 +34,8 @@ class UserAddressForm extends React.Component {
 
   render() {
     return (
-			<form className=`${this.shouldDisplay ? '' : 'hidden'}` onSubmit={this.handleSubmit} id="user-address-form">
+			<form
+        onSubmit={this.handleSubmit} id="user-address-form">
 
         <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
 					value={this.state.street_address}
@@ -56,8 +57,8 @@ class UserAddressForm extends React.Component {
 					onChange={this.update("zip_code")}
           placeholder='zip_code' />
 
-				<input type="submit" value='Find my reps' />
-  				</form>
+				<input className='submit-btn' type="submit" value='Find my reps' />
+  		</form>
 		);
   }
 

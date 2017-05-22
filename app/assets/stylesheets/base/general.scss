@@ -1,50 +1,20 @@
-html {
-	position: relative;
-	height: 100%;
-}
-
-body {
-  font-family: $sans-serif;
-	width: 80%;
-	margin: 0 auto;
-	font-size: 17px;
-}
-
-link {
-	color: $dark-plum;
-}
-
-i {
-	font-size: 32px;
-}
-
-.map{
-	width: 800px;
-	height: 800px;
-	float: left;
-	position: relative;
-}
-
-.hidden {
-	display: none;
-}
-
 h1 {
 	font-size: 30px;
 	font-weight: bold;
-	font-family: $garamond;
 }
 
 h2 {
 	font-size: 22px;
 	text-transform: uppercase;
 	font-weight: lighter;
-	font-family: $garamond;
 }
 
 h3 {
 	font-size: 18px;
 	font-weight: lighter;
 	text-transform: uppercase;
-	font-family: $garamond;
+}
+
+.hidden {
+	display: none;
 }

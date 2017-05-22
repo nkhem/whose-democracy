@@ -1,34 +1,10 @@
-.transparent-btn, .submit-btn {
+.submit-btn {
   padding: 10px 15px;
   margin: 5px;
   font-weight: bold;
-  font-family: $sans-serif;
   text-transform: uppercase;
   text-align: center;
   border-radius: 5px;
 	transition: background-color 0.3s ease;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-}
-
-.transparent-btn {
-  color: $light-plum;
-	background-color: inherit;
-  box-shadow: none;
-}
-
-.transparent-btn:hover {
-  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-  background-color: $dark-plum;
-  border-color: $dark-plum-shadow;
-}
-
-.submit-btn {
-  color: $light-plum;
-  background-color: $plum;
-  border-color: $plum-shadow;
-}
-
-.submit-btn:hover {
-  background-color: $gray-plum;
-  border-color: $gray-plum-shadow;
 }

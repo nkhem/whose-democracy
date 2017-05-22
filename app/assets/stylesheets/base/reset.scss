@@ -5,7 +5,8 @@ label, input, textarea,
 span, article, footer {
   margin:0;
   padding: 0;
-  border: none;
+  // border: none;
+  font-family: inherit;
   outline: none;
   font: inherit;
   color: inherit;
@@ -37,7 +38,7 @@ button {
 }
 
 textarea {
-  border: none;
+  // border: none;
   background-color: transparent;
   resize: none;
   outline: none;
@@ -46,4 +47,8 @@ textarea {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
