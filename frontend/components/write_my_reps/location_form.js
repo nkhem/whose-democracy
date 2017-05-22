@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserAddressForm extends React.Component {
+class LocationForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -15,8 +15,9 @@ class UserAddressForm extends React.Component {
 
   handleSubmit(e) {
 		e.preventDefault();
-    console.log('handling submit, this.state:', this.state);
-		// this.props.processUserAddressForm(this.state);
+    // console.log('handling submit, this.state:', this.state);
+    console.log(this);
+		this.props.processLocationForm(this.state);
 
     this.setState({
       street_address: '',
@@ -64,4 +65,4 @@ class UserAddressForm extends React.Component {
 
 }
 
-export default UserAddressForm;
+export default LocationForm;

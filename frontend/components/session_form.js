@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login, signup } from '../actions/session_actions';
 
-import Header from './header';
+import Header from './header/header';
 
 class SessionForm extends React.Component {
   constructor(props){
