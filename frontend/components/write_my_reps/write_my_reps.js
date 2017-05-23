@@ -29,6 +29,7 @@ class WriteMyReps extends React.Component {
     this.usersReps = ['Rep. Anna Eshoo', 'Sen. Dianne Feinstein', 'Sen. Kamala Harris'];
     this.currentForm = 'location-form';
     this.processLocationForm = this.processLocationForm.bind(this);
+    this.processSelectRepsForm = this.processSelectRepsForm.bind(this);
     this.renderForm = this.renderForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -58,18 +59,17 @@ class WriteMyReps extends React.Component {
 	}
 
   processLocationForm(addressData){
-    let nextLocalState = this.state;
+    let nextLocalState ;
     this.currentForm = 'select-reps-form';
-    this.setState(Object.assign(nextLocalState, addressData));
-
-    console.log('processLocationForm, this.state:', this.state);
+    this.setState(Object.assign(this.state, addressData));
+    console.log(this.state);
   }
 
   processSelectRepsForm(selectedReps){
-    let nextLocalState = this.state;
+    console.log('about to processSelectRepsForm, this.state:', this.state);
+    let nextLocalState = Object.assign(this.state, {email_recipients: selectedReps});
     this.currentForm = 'compose-email-form';
-    this.setState(Object.assign(nextLocalState, {email_recipients: selectedReps}));
-    console.log('processSelectRepsForm, this.state:', this.state);
+    this.setState(nextLocalState);
 
   }
 
@@ -81,7 +81,6 @@ class WriteMyReps extends React.Component {
 
   renderForm(){
     if (this.currentForm === 'location-form') {
-      console.log('this.currentForm === location-form');
       return (
         <LocationForm
           processLocationForm={this.processLocationForm}
@@ -95,7 +94,7 @@ class WriteMyReps extends React.Component {
         />
       );
     } else if (this.currentForm === 'compose-email-form') {
-
+      return <p>compose-email-form</p>;
     }
   }
 

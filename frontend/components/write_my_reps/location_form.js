@@ -15,16 +15,7 @@ class LocationForm extends React.Component {
 
   handleSubmit(e) {
 		e.preventDefault();
-    // console.log('handling submit, this.state:', this.state);
-    console.log(this);
 		this.props.processLocationForm(this.state);
-
-    this.setState({
-      street_address: '',
-      city: '',
-      state_abbrev: '',
-      zip_code: '',
-    });
 	}
 
   update(field) {

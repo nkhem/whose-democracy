@@ -19,23 +19,14 @@ class SelectRepsForm extends React.Component {
     const initialCheckedReps = Object.assign([], this.props.usersReps);
     //this is where API GET request will go
     this.setState({
-      uncheckedReps: [],
       checkedReps: initialCheckedReps
     });
   }
 
   handleSubmit(e) {
-  		e.preventDefault();
-      // console.log('handling submit, this.state:', this.state);
-      console.log(this.state);
-  		// this.props.processSelectRepsForm(this.state);
-
-      // this.setState({
-      //   street_address: '',
-      //   city: '',
-      //   state_abbrev: '',
-      //   zip_code: '',
-      // });
+    e.preventDefault();
+    console.log('handlesubmit',this.state);
+		this.props.processSelectRepsForm(this.state);
 	}
 
   update(field) {
@@ -80,7 +71,7 @@ class SelectRepsForm extends React.Component {
     return (
 			<form
         className='select-reps-form'
-        onSubmit={this.handleSubmit} id="user-checkress-form">
+        onSubmit={this.handleSubmit} id="user-checkreps-form">
 
         {this.renderCheckboxes()}
 
