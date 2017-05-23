@@ -62,12 +62,18 @@ class SelectRepsForm extends React.Component {
     this.setState({ checkedReps: nextCheckedReps });
   }
 
+  renderCheckbox(rep){
+    return (
+      <CheckBox
+        label={rep}
+        key={rep}
+        checked={this.state.checkedReps.includes(rep)}
+        handleCheckboxChange={this.handleCheckboxChange}/>
+    );
+  }
+
   renderCheckboxes(){
-    return this.props.usersReps.map(rep => < CheckBox
-      label={rep}
-      key={rep}
-      checked={this.state.checkedReps.includes(rep)}
-      handleCheckboxChange={this.handleCheckboxChange}/>)
+    return this.props.usersReps.map(rep => this.renderCheckbox(rep));
   }
 
   render() {
