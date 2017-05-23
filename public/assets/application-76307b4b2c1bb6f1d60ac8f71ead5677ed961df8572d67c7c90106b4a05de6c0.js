@@ -42292,8 +42292,8 @@ var WriteMyReps = function (_React$Component) {
       console.log('processLocationForm, this.state:', this.state);
     }
   }, {
-    key: 'processSelectRepForm',
-    value: function processSelectRepForm(selectRepData) {}
+    key: 'processSelectRepsForm',
+    value: function processSelectRepsForm(selectRepData) {}
   }, {
     key: 'update',
     value: function update(field) {
@@ -42318,7 +42318,7 @@ var WriteMyReps = function (_React$Component) {
           processLocationForm: this.processLocationForm
         }),
         _react2.default.createElement(_select_rep_form2.default, {
-          processSelectRepForm: this.processSelectRepForm
+          processSelectRepsForm: this.processSelectRepsForm
         })
       );
     }
@@ -42485,13 +42485,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SelectRepForm = function (_React$Component) {
-  _inherits(SelectRepForm, _React$Component);
+var SelectRepsForm = function (_React$Component) {
+  _inherits(SelectRepsForm, _React$Component);
 
-  function SelectRepForm(props) {
-    _classCallCheck(this, SelectRepForm);
+  function SelectRepsForm(props) {
+    _classCallCheck(this, SelectRepsForm);
 
-    var _this = _possibleConstructorReturn(this, (SelectRepForm.__proto__ || Object.getPrototypeOf(SelectRepForm)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SelectRepsForm.__proto__ || Object.getPrototypeOf(SelectRepsForm)).call(this, props));
 
     _this.state = {
       representatives: []
@@ -42501,13 +42501,13 @@ var SelectRepForm = function (_React$Component) {
     return _this;
   }
 
-  _createClass(SelectRepForm, [{
+  _createClass(SelectRepsForm, [{
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
       // console.log('handling submit, this.state:', this.state);
       console.log(this.state);
-      // this.props.processSelectRepForm(this.state);
+      // this.props.processSelectRepsForm(this.state);
 
       // this.setState({
       //   street_address: '',
@@ -42544,10 +42544,10 @@ var SelectRepForm = function (_React$Component) {
     }
   }]);
 
-  return SelectRepForm;
+  return SelectRepsForm;
 }(_react2.default.Component);
 
-exports.default = SelectRepForm;
+exports.default = SelectRepsForm;
 
 /***/ })
 /******/ ]);
