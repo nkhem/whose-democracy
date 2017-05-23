@@ -4,16 +4,24 @@ import SelectRepsCheckBox from './select_reps_checkbox';
 class SelectRepsForm extends React.Component {
   constructor(props){
     super(props);
-    let firstSelectedReps = props.usersReps;
+
     this.state = {
-      unselectedReps: [],
-      selectedReps: firstSelectedReps
+      checkedReps: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.uncheckRep = this.uncheckRep.bind(this);
     this.checkRep = this.checkRep.bind(this);
+  }
+
+  componentDidMount(){
+    const initialCheckedReps = Object.assign([], this.props.usersReps);
+    //this is where API GET request will go
+    this.setState({
+      uncheckedReps: [],
+      checkedReps: initialCheckedReps
+    });
   }
 
   handleSubmit(e) {
@@ -37,8 +45,7 @@ class SelectRepsForm extends React.Component {
   }
 
   handleCheckboxChange(rep){
-    console.log('in handleCheckboxChange, selectedReps', this.state.selectedReps);
-    if (this.state.selectedReps.includes(rep)) {
+    if (this.state.checkedReps.includes(rep)) {
       this.uncheckRep(rep);
     } else {
       this.checkRep(rep);
@@ -46,26 +53,13 @@ class SelectRepsForm extends React.Component {
   }
 
   uncheckRep(rep){
-    let nextSelectedReps = this.state.selectedReps.filter(selectedRep => selectedRep !== rep);
-    console.log('nextSelectedReps',nextSelectedReps);
-    let nextUnselectedReps = this.state.unselectedReps.push(rep);
-    this.setState({
-      unselectedReps: nextUnselectedReps,
-      selectedReps: nextSelectedReps,
-    });
-    console.log('unchecked rep', rep, this.state);
+    let nextCheckedReps = this.state.checkedReps.filter(checkedRep => checkedRep !== rep);
+    this.setState({ checkedReps: nextCheckedReps });
   }
 
   checkRep(rep){
-    console.log(this.state.unselectedReps);
-    console.log(this.state.selectedReps);
-    let nextUnselectedReps = this.state.unselectedReps.filter(unselectedRep => unselectedRep !== rep);
-    let nextSelectedReps = this.state.selectedReps.push(rep);
-    this.setState({
-      selectedReps: nextSelectedReps,
-      unselectedReps: nextUnselectedReps
-    });
-    console.log('unchecked rep', rep, this.state);
+    let nextCheckedReps = this.state.checkedReps.concat(rep);
+    this.setState({ checkedReps: nextCheckedReps });
   }
 
   render() {
@@ -77,7 +71,7 @@ class SelectRepsForm extends React.Component {
         { this.props.usersReps.map(rep => <SelectRepsCheckBox
           rep={rep}
           key={rep}
-          checked={this.state.selectedReps.includes(rep)}
+          checked={this.state.checkedReps.includes(rep)}
           handleCheckboxChange={this.handleCheckboxChange}/>)}
 
         <input className='submit-btn' type="submit" value='Write them!' />
