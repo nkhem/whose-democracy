@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SelectRepsCheckBox extends React.Component {
+class CheckBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,14 +10,12 @@ class SelectRepsCheckBox extends React.Component {
   }
 
   toggleCheckboxChange(){
-  const { handleCheckboxChange } = this.props;
-
-  this.setState({
-    isChecked: !this.state.isChecked,
-  });
-
-  handleCheckboxChange(this.props.rep);
-}
+    const { handleCheckboxChange } = this.props;
+    this.setState({
+      isChecked: !this.state.isChecked
+    });
+    handleCheckboxChange(this.props.label);
+  }
 
   render() {
     return (
@@ -25,12 +23,12 @@ class SelectRepsCheckBox extends React.Component {
         <label>
           <input
             type="checkbox"
-            value={this.props.rep}
+            value={this.props.label}
             checked={this.state.isChecked}
             onChange={this.toggleCheckboxChange}
           />
 
-          {this.props.rep}
+          {this.props.label}
         </label>
       </div>
     );
@@ -38,4 +36,4 @@ class SelectRepsCheckBox extends React.Component {
 
 }
 
-export default SelectRepsCheckBox;
+export default CheckBox;

@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectRepsCheckBox from './select_reps_checkbox';
+import CheckBox from '../checkbox';
 
 class SelectRepsForm extends React.Component {
   constructor(props){
@@ -62,21 +62,25 @@ class SelectRepsForm extends React.Component {
     this.setState({ checkedReps: nextCheckedReps });
   }
 
+  renderCheckboxes(){
+    return this.props.usersReps.map(rep => < CheckBox
+      label={rep}
+      key={rep}
+      checked={this.state.checkedReps.includes(rep)}
+      handleCheckboxChange={this.handleCheckboxChange}/>)
+  }
+
   render() {
     return (
 			<form
         className='select-reps-form'
         onSubmit={this.handleSubmit} id="user-checkress-form">
 
-        { this.props.usersReps.map(rep => <SelectRepsCheckBox
-          rep={rep}
-          key={rep}
-          checked={this.state.checkedReps.includes(rep)}
-          handleCheckboxChange={this.handleCheckboxChange}/>)}
+        {this.renderCheckboxes()}
 
         <input className='submit-btn' type="submit" value='Write them!' />
   		</form>
-    )
+    );
   }
 
 }
