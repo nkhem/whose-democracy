@@ -3,16 +3,11 @@ require 'smartystreets_ruby_sdk/client_builder'
 require 'smartystreets_ruby_sdk/us_street/lookup'
 require 'byebug'
 
-AUTH = {
-  SMARTY_AUTH_ID: 'cc5d64ad-b025-c32a-b258-85386ab89678',
-  SMARTY_AUTH_TOKEN: 'OPH7pOoUwQh7a680WXhT',
-}
-
 class USStreetSingleAddressExample
   def run
-    auth_id = AUTH[:SMARTY_AUTH_ID]
-    auth_token = AUTH[:SMARTY_AUTH_TOKEN]
-    credentials = StaticCredentials.new(auth_id, auth_token)
+    auth_id = ENV["SMARTY_AUTH_ID"]
+    auth_token = ENV["SMARTY_AUTH_TOKEN"]
+    credentials = StaticCredentials.new(self.auth_id, self.auth_token)
 
     client = ClientBuilder.new(credentials).build_us_street_api_client
 
@@ -29,7 +24,7 @@ class USStreetSingleAddressExample
     end
 
     result = lookup.result
-debugger
+
     if result.nil?
       puts 'No candidates. This means the address is not valid.'
       return
