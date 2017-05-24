@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def current_user
     puts "GOOGLE_API_KEY: #{ENV['GOOGLE_API_KEY']}"
     puts "CONGRESS_API_KEY: #{ENV['CONGRESS_API_KEY']}"
+
     return nil unless session[:session_token]
     @current_user ||= User.find_by(session_token: session[:session_token])
   end

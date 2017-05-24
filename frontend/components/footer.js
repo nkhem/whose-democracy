@@ -3,6 +3,8 @@ import React from 'react';
 class Footer extends React.Component {
 
   render() {
+    let key = process.env;
+    console.log('key',key);
     return (
       <div className='footer' id={this.props.id}>
         <a href="https://github.com/nkhem/gulp" target="_blank">
