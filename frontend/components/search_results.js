@@ -25,7 +25,7 @@ class SearchResults extends React.Component {
   renderSearchResultDetails(){
     return this.state.searchResults.map(res => {
       return (
-        <li>
+        <li key={`${res.id}`}>
           <h2>Name: {res.name}</h2>
           <p>Role: {res.role}</p>
           <p>Party: {res.party}</p>
