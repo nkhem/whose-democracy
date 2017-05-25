@@ -1,10 +1,9 @@
 import React from 'react';
-
+require('../../.env').load();
 class Footer extends React.Component {
 
   render() {
-    let key = process.env;
-    console.log('key',key);
+    console.log('process.env.CONGRESS_API_KEY',process.env.CONGRESS_API_KEY);
 
     return (
       <div className='footer' id={this.props.id}>
