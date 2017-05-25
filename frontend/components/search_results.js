@@ -6,15 +6,38 @@ class SearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: []
+      searchResults: [],
+      searchTerm: []
     };
+    this.renderSearchResultDetails = this.renderSearchResultDetails.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.searchTerm !== this.props.searchTerm) {
+      const nextState = {
+        searchTerm: nextProps.searchTerm,
+        searchResults: nextProps.searchResults
+      };
+      this.setState(nextState);
+    }
+  }
+
+  renderSearchResultDetails(){
+    return this.state.searchResults.map(res => {
+      return (
+        <li>
+          <h2>Name: {res.name}</h2>
+          <p>Role: {res.role}</p>
+          <p>Party: {res.party}</p>
+        </li>
+      );
+    });
   }
 
   render() {
-    console.log('SearchResults#render, this.props.searchResults:', this.props.searchResults);
     return (
 			<div className='search-results'>
-
+        {this.renderSearchResultDetails()}
   		</div>
     );
   }

@@ -22,14 +22,15 @@ export const fetchAllReps = (chamber) => {
 
 export const fetchRepByGeography = (chamber, stateAbbrev, district) => {
   district = district ? `/${district}` : '';
-
+  let url = `https://api.propublica.org/congress/v1/members/${chamber}/${stateAbbrev}${district}/current.json`
+  console.log('url', url);
   return $.ajax({
-      url: `https://api.propublica.org/congress/v1/members/${chamber}/${stateAbbrev}${district}/current.json`,
+      url: url,
       headers: {
           'X-API-Key': Env.PROPUBLICA_KEY,
           'Content-Type':'application/json'
       },
       method: 'GET',
       dataType: 'json',
-    }).then(res => res.results);
+    });
 };

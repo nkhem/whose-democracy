@@ -14,7 +14,8 @@ class Main extends React.Component {
     super(props);
 
     this.state = {
-      searchResults: []
+      searchResults: [],
+      searchTerm: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,25 +23,19 @@ class Main extends React.Component {
   }
 
   fetchSearchResults(searchTerm){
-    CongressApiRepUtil.fetchSenatorsByState(searchTerm).then( res => {
-      console.log('fetchSearchResults res:',res);
-    });
+    return CongressApiRepUtil.fetchSenatorsByState(searchTerm);
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    const searchTerm = e.target.value;
-    this.fetchSearchResults(searchTerm);
-
-    // if (cat) {
-    //   this.props.fetchBusinessesByCategory(cat)
-    //     .then( () => this.props.router.replace(`/search?category='${cat}'`));
-    // } else if (biz) {
-    //   this.props.fetchBusiness(biz)
-    //     .then( res => this.props.router.replace(`/business/${res.business.id}`));
-    // } else {
-    //   console.log('no matches found');
-    // }
+  handleSubmit(searchTerm){
+    return e => {
+      e.preventDefault();
+      this.fetchSearchResults(searchTerm).then( res => {
+        this.setState({
+          searchTerm: searchTerm,
+          searchResults: res.results
+        });
+      });
+    };
   }
 
   render() {
@@ -51,9 +46,12 @@ class Main extends React.Component {
           logout={ this.props.logout } />
         <h1>Whose Democracy</h1>
         <SearchBar
-          handleSubmit={this.handleSubmit}/>
+          handleSubmit={this.handleSubmit}
+        />
         <SearchResults
-          searchResults={this.state.searchResults}/>
+          searchResults={this.state.searchResults}
+          searchTerm={this.state.searchTerm}
+        />
       </div>
     );
   }

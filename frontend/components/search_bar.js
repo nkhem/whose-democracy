@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
   render(){
     return (
       <div className='search-bar' id={this.props.id}>
-        <form onSubmit={ this.props.handleSubmit }>
+        <form onSubmit={ e => this.props.handleSubmit(this.state.searchTerm)(e) }>
           <input
             type="text"
             placeholder="Find Senator by state abbrev"
