@@ -1,8 +1,12 @@
 import * as Env from '../env.js';
 
-export const fetchAllMembers = (congressNum, chamber) => {
+export const fetchAllSenators = () => {
+  return fetchAllMembers('senate');
+};
+
+export const fetchAllMembers = (chamber) => {
   return $.ajax({
-      url: 'https://api.propublica.org/congress/v1/115/senate/members.json',
+      url: `https://api.propublica.org/congress/v1/115/${chamber}/members.json`,
       headers: {
           'X-API-Key': Env.PROPUBLICA_KEY,
           'Content-Type':'application/json'

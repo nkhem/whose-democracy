@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import LocationForm from './location_form';
 import SelectRepsForm from './select_reps_form';
 
-import { fetchAllMembers } from '../../util/congress_api/member_data';
+import { fetchAllMembers } from '../../actions/congress_api/member_actions';
 
 class WriteMyReps extends React.Component {
   constructor(props){
