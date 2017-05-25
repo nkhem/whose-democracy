@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import LocationForm from './location_form';
 import SelectRepsForm from './select_reps_form';
 
+import { fetchAllMembers } from '../../util/congress_api/member_data';
+
 class WriteMyReps extends React.Component {
   constructor(props){
     super(props);
@@ -32,6 +34,10 @@ class WriteMyReps extends React.Component {
     this.processSelectRepsForm = this.processSelectRepsForm.bind(this);
     this.renderForm = this.renderForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount(){
+    this.props.fetchAllMembers().then( res => {console.log(res);});
   }
 
   handleSubmit(e) {
@@ -118,7 +124,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    processForm: user => dispatch(processForm(user)),
+    fetchAllMembers: user => dispatch(fetchAllMembers(user)),
   };
 };
 

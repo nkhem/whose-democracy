@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { logout } from '../actions/session_actions';
 import Header from './header/header';
+import WriteMyReps from './write_my_reps/write_my_reps';
 
 class Main extends React.Component {
 
@@ -13,6 +14,7 @@ class Main extends React.Component {
           loggedIn={this.props.loggedIn}
           logout={ this.props.logout } />
         <h1>Whose Democracy</h1>
+        <WriteMyReps />
       </div>
     );
   }
