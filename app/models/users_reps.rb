@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: users_senators
+# Table name: users_reps
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
 #  senator_id :integer          not null
 #
 
-class UsersSenators < ApplicationRecord
-  validates :user_id, :senator_id, presence: true
+class UsersReps < ApplicationRecord
+  validates :user_id, :rep_id, presence: true
 
-  belongs_to :senator
+  belongs_to :rep
   belongs_to :user
 end

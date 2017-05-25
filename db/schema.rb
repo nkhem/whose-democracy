@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525184712) do
+ActiveRecord::Schema.define(version: 20170525185900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,7 @@ ActiveRecord::Schema.define(version: 20170525184712) do
     t.integer "congress",  null: false
   end
 
-  create_table "house_reps", force: :cascade do |t|
-    t.integer "official_member_id", null: false
-  end
-
-  create_table "senators", force: :cascade do |t|
+  create_table "reps", force: :cascade do |t|
     t.integer "official_member_id", null: false
   end
 
@@ -50,12 +46,7 @@ ActiveRecord::Schema.define(version: 20170525184712) do
     t.integer "bill_id", null: false
   end
 
-  create_table "users_house_reps", force: :cascade do |t|
-    t.integer "user_id",      null: false
-    t.integer "house_rep_id", null: false
-  end
-
-  create_table "users_senators", force: :cascade do |t|
+  create_table "users_reps", force: :cascade do |t|
     t.integer "user_id",    null: false
     t.integer "senator_id", null: false
   end

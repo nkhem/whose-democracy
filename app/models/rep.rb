@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: house_reps
+# Table name: reps
 #
 #  id                 :integer          not null, primary key
 #  official_member_id :integer          not null
 #
 
-class HouseRep < ApplicationRecord
+class Rep < ApplicationRecord
   validates :followers, :official_member_id, presence: true
 
   has_many :followers,
-    through: :users_house_reps,
+    through: :users_reps,
     source: :user_id
 end

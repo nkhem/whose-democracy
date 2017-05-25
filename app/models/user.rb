@@ -30,6 +30,14 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
+  has_many :bill_followings,
+    through: :users_bills,
+    source: :bill_id
+
+  has_many :rep_followings,
+    through: :users_reps,
+    source: :rep_id
+
   attr_reader :password
 
   after_initialize :ensure_session_token
