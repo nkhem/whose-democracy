@@ -7,7 +7,7 @@
 #
 
 class Rep < ApplicationRecord
-  validates :followers, :official_member_id, presence: true
+  validates :official_member_id, presence: true
 
   has_many :followers,
     through: :users_reps,
