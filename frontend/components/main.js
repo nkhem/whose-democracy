@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { logout } from '../actions/session_actions';
+import { followRep } from '../actions/following_actions';
 import * as CongressApiRepUtil from '../util/congress_api/rep_util';
 
 import Header from './header/header';
@@ -50,6 +51,7 @@ class Main extends React.Component {
         />
         <SearchResults
           searchResults={this.state.searchResults}
+          followRep={this.state.followRep}
           searchTerm={this.state.searchTerm}
         />
       </div>
@@ -67,7 +69,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    followRep: officialMemberId => dispatch(followRep(officialMemberId))
   };
 };
 

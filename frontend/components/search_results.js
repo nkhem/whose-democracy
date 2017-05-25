@@ -22,13 +22,25 @@ class SearchResults extends React.Component {
     }
   }
 
+  renderFollowBtn(officialMemberId){
+    return (
+      <button
+        className="follow-btn"
+        onClick={ this.props.followRep(officialMemberId) }>
+        Follow
+      </button>
+    );
+  }
+
   renderSearchResultDetails(){
     return this.state.searchResults.map(res => {
+      const officialMemberId = res.id;
       return (
         <li key={`${res.id}`}>
           <h2>Name: {res.name}</h2>
           <p>Role: {res.role}</p>
           <p>Party: {res.party}</p>
+          {this.renderFollowBtn(officialMemberId)}
         </li>
       );
     });
