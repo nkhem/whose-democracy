@@ -1,27 +1,36 @@
 import React from 'react';
 
-import * as CongressApiRepUtil from '../util/congress_api/rep_util';
-
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       searchTerm: ''
     };
+    this.update = this.update.bind(this);
   }
-  componentWillMount(){
-    CongressApiRepUtil.fetchSenatorsByState('CA').then( res => {
-      console.log('cwm', res);
-      // this.setState({ allSenators: res.senators });
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
     });
-
   }
 
-  render() {
+  render(){
     return (
-			<form className='search-bar'>
-
-  		</form>
+      <div className='search-bar' id={this.props.id}>
+        <form onSubmit={ this.props.handleSubmit }>
+          <input
+            type="text"
+            placeholder="Find Senator by state abbrev"
+            autoComplete="off"
+            value={this.state.searchTerm}
+            onChange={ this.update('searchTerm') }
+          />
+          <button>
+            <i className="fa fa-search" aria-hidden="true"></i>search
+          </button>
+        </form>
+      </div>
     );
   }
 
