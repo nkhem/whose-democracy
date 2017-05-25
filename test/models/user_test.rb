@@ -12,8 +12,8 @@
 #  prefix          :string           not null
 #  email           :string           not null
 #  phone_number    :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
+#  password_digest :string
+#  session_token   :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

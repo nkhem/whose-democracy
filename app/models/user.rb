@@ -12,8 +12,8 @@
 #  prefix          :string           not null
 #  email           :string           not null
 #  phone_number    :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
+#  password_digest :string
+#  session_token   :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -29,7 +29,6 @@ class User < ApplicationRecord
   #columns necessary for account creation
   validates :phone_number, presence: true
   validates :password, length: { minimum: 8, allow_nil: true }
-
 
   attr_reader :password
 

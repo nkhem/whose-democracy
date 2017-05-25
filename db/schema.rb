@@ -10,43 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525174815) do
+ActiveRecord::Schema.define(version: 20170525184712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bill_followings", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "bill_id", null: false
-  end
-
-  create_table "bills_tables", force: :cascade do |t|
-    t.integer "user_id",   null: false
+  create_table "bills", force: :cascade do |t|
     t.string  "bill_slug", null: false
     t.integer "congress",  null: false
   end
 
-  create_table "house_rep_followings", force: :cascade do |t|
-    t.integer "user_id",      null: false
-    t.integer "house_rep_id", null: false
-  end
-
-  create_table "house_reps_tables", force: :cascade do |t|
-    t.integer "user_id",            null: false
+  create_table "house_reps", force: :cascade do |t|
     t.integer "official_member_id", null: false
-    t.string  "state_abbrev",       null: false
-    t.integer "district",           null: false
   end
 
-  create_table "senator_followings", force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "senator_id", null: false
-  end
-
-  create_table "senators_tables", force: :cascade do |t|
-    t.integer "user_id",            null: false
+  create_table "senators", force: :cascade do |t|
     t.integer "official_member_id", null: false
-    t.string  "state_abbrev",       null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +43,21 @@ ActiveRecord::Schema.define(version: 20170525174815) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["email"], name: "index_users_on_email", using: :btree
+  end
+
+  create_table "users_bills", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "bill_id", null: false
+  end
+
+  create_table "users_house_reps", force: :cascade do |t|
+    t.integer "user_id",      null: false
+    t.integer "house_rep_id", null: false
+  end
+
+  create_table "users_senators", force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "senator_id", null: false
   end
 
 end
