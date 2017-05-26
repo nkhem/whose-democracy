@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
 import { followRep } from '../actions/following_actions';
 import * as CongressApiRepUtil from '../util/congress_api/rep_util';
+import * as FollowingUtil from '../util/following_api_util';
 
 import Header from './header/header';
 import SearchBar from './search_bar';
 import SearchResults from './search_results';
 
 class Main extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -51,8 +51,9 @@ class Main extends React.Component {
         />
         <SearchResults
           searchResults={this.state.searchResults}
-          followRep={this.state.followRep}
+          followRep={FollowingUtil.followRep}
           searchTerm={this.state.searchTerm}
+          loggedIn={this.props.loggedIn}
         />
       </div>
     );

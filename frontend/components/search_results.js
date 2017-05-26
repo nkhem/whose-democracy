@@ -23,13 +23,19 @@ class SearchResults extends React.Component {
   }
 
   renderFollowBtn(officialMemberId){
-    return (
-      <button
-        className="follow-btn"
-        onClick={ this.props.followRep(officialMemberId) }>
-        Follow
-      </button>
-    );
+    console.log('inside renderFollowBtn, this.props.followRep', this.props.followRep);
+    console.log('inside renderFollowBtn, officialMemberId', officialMemberId);
+    if (this.props.loggedIn) {
+      return (
+        <button
+          className="follow-btn"
+          onClick={ () => {this.props.followRep(officialMemberId);} }>
+          Follow
+        </button>
+      );
+    } else {
+      return null;
+    }
   }
 
   renderSearchResultDetails(){

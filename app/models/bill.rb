@@ -11,6 +11,6 @@ class Bill < ApplicationRecord
   validates :bill_slug, presence: true
 
   has_many :followers,
-    through: :users_bills,
+    through: :users_bill,
     source: :user_id
 end

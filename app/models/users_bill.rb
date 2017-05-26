@@ -7,7 +7,7 @@
 #  bill_id :integer          not null
 #
 
-class UsersBills < ApplicationRecord
+class UsersBill < ApplicationRecord
   validates :user_id, :bill_id, presence: true
 
   belongs_to :bill

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525185900) do
+ActiveRecord::Schema.define(version: 20170526001128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170525185900) do
   end
 
   create_table "reps", force: :cascade do |t|
-    t.integer "official_member_id", null: false
+    t.string "official_member_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170525185900) do
   end
 
   create_table "users_reps", force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "senator_id", null: false
+    t.integer "user_id", null: false
+    t.integer "rep_id",  null: false
   end
 
 end
