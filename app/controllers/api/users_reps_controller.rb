@@ -13,9 +13,10 @@ class Api::UsersRepsController < ApplicationController
       @users_rep = UsersRep.
         where("rep_id=?", @rep.id).
         where("user_id=?", current_user.id)
+
       # create joins association between user and rep
-      unless @users_rep
-        users_rep = UsersRep.create!(
+      if @users_rep.empty?
+        @users_rep = UsersRep.create!(
           user_id: current_user.id,
           rep_id: @rep.id
         )
@@ -25,7 +26,7 @@ class Api::UsersRepsController < ApplicationController
       render json: invalid.record.errors.full_messages, status: 404
     end
 
-    render :index if @rep && users_rep
+    render :index
   end
 
   def destroy

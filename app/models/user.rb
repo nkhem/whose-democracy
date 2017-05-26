@@ -35,11 +35,11 @@ class User < ApplicationRecord
 
   has_many :bill_followings,
     through: :users_bills,
-    source: :bill_id
+    source: :bill
 
   has_many :rep_followings,
     through: :users_reps,
-    source: :rep_id
+    source: :rep
 
   attr_reader :password
 

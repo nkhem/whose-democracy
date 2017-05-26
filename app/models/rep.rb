@@ -8,8 +8,8 @@
 
 class Rep < ApplicationRecord
   validates :official_member_id, presence: true
-
+  has_many :users_reps
   has_many :followers,
-    through: :users_rep,
-    source: :user_id
+    through: :users_reps,
+    source: :user
 end
