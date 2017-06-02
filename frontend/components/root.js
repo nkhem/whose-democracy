@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
-import BrowseSection from './browse/browse-section';
+import BrowseSection from './browse-section';
 import SessionForm from './session_form';
 
 const Root = ({ store }) => {

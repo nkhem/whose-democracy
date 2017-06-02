@@ -16,27 +16,32 @@ class BrowseSection extends React.Component {
 
     this.state = {
       searchResults: [],
-      searchTerm: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchSearchResults = this.fetchSearchResults.bind(this);
   }
 
-  fetchSearchResults(searchTerm){
-    return CongressApiRepUtil.fetchSenatorsByState(searchTerm);
+  fetchSearchResults(searchType, searchCriteria){
+    if (searchType === 'findSenatorsByLocationSearchCriteria') {
+      return CongressApiRepUtil.fetchSenatorsByState(searchCriteria.stateAbbrev);
+    } else if (searchType === 'findHouseRepByLocationSearchCriteria') {
+      console.log('send ', searchCriteria, 'to SmartyStreets');
+    }
   }
 
-  handleSubmit(searchTerm){
+  handleSubmit(searchType, searchCriteria){
     return e => {
+      console.log('searchType',searchType);
+      console.log('searchCriteria',searchCriteria);
       e.preventDefault();
-      this.fetchSearchResults(searchTerm).then( res => {
-        this.setState({
-          searchTerm: searchTerm,
-          searchResults: res.results
+        return this.fetchSearchResults(searchType, searchCriteria).then( res => {
+          console.log('fetched res:', res);
+          this.setState({
+            searchResults: res.results
+          });
         });
-      });
-    };
+      };
   }
 
   render() {
@@ -52,7 +57,6 @@ class BrowseSection extends React.Component {
         <SearchResults
           searchResults={this.state.searchResults}
           followRep={FollowingUtil.followRep}
-          searchTerm={this.state.searchTerm}
           loggedIn={this.props.loggedIn}
         />
       </div>

@@ -14,9 +14,17 @@ class SearchResults extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.searchTerm !== this.props.searchTerm) {
+    
+    let shouldRerenderSearchResults = (
+      nextProps.searchResults.length !== this.props.searchResults.length || (
+        nextProps.searchResults.length > 0 &&
+        this.props.searchResults.length > 0 &&
+        nextProps.searchResults[0].name !== this.props.searchResults[0].name
+      )
+    );
+
+    if (shouldRerenderSearchResults) {
       const nextState = {
-        searchTerm: nextProps.searchTerm,
         searchResults: nextProps.searchResults
       };
       this.setState(nextState);

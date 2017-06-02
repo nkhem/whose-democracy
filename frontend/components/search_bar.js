@@ -6,16 +6,23 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ''
+      findSenatorsByLocationSearchCriteria: {
+        stateAbbrev: ''
+      },
+      findHouseRepByLocationSearchCriteria: {
+        streetAddress: '',
+        stateAbbrev: '',
+        zipCode: ''
+      }
     };
     this.update = this.update.bind(this);
     this.renderStateAbbrevOptions = this.renderStateAbbrevOptions.bind(this);
   }
 
-  update(field) {
+  update(searchType, searchField) {
     return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+      [searchType]: { [searchField]: e.currentTarget.value }
+  });
   }
 
   renderStateAbbrevOptions(){
@@ -32,12 +39,13 @@ class SearchBar extends React.Component {
   }
 
   render(){
+    console.log('this.state',this.state);
     return (
       <div className='search-bar' id={this.props.id}>
         <h3>Find Senator by state abbrev</h3>
-        <form onSubmit={ e => this.props.handleSubmit(this.state.searchTerm)(e) }>
+        <form onSubmit={ e => this.props.handleSubmit('findSenatorsByLocationSearchCriteria', this.state.findSenatorsByLocationSearchCriteria)(e) }>
 
-        <select value={this.state.searchTerm} onChange={this.update('searchTerm')}>
+        <select value={this.state.stateAbbrev} onChange={this.update('findSenatorsByLocationSearchCriteria', 'stateAbbrev')}>
           <option value=''>--</option>
           {this.renderStateAbbrevOptions()}
         </select>
@@ -47,9 +55,9 @@ class SearchBar extends React.Component {
         </form>
 
         <h3>Find HouseRep by address</h3>
-        <form onSubmit={ e => this.props.handleSubmit(this.state.searchTerm)(e) }>
+        <form onSubmit={ e => this.props.handleSubmit(this.state.stateAbbrev)(e) }>
 
-        <select value={this.state.searchTerm} onChange={this.update('searchTerm')}>
+        <select value={this.state.stateAbbrev} onChange={this.update('findHouseRepByLocationSearchCriteria', 'stateAbbrev')}>
           <option value=''>--</option>
           {this.renderStateAbbrevOptions()}
         </select>
@@ -68,6 +76,6 @@ export default SearchBar;
 //   type="text"
 //   placeholder="Find Senator by state abbrev"
 //   autoComplete="off"
-//   value={this.state.searchTerm}
+//   value={this.state.stateAbbrev}
 //    }
 // />
