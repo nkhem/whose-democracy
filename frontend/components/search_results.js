@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as CongressApiRepUtil from '../util/congress_api/rep_util';
+import RepIndex from './rep/rep_index';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class SearchResults extends React.Component {
       searchResults: [],
       searchTerm: []
     };
-    this.renderSearchResultDetails = this.renderSearchResultDetails.bind(this);
+    this.renderFollowBtn = this.renderFollowBtn.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -38,24 +39,13 @@ class SearchResults extends React.Component {
     }
   }
 
-  renderSearchResultDetails(){
-    return this.state.searchResults.map(res => {
-      const officialMemberId = res.id;
-      return (
-        <li key={`${res.id}`}>
-          <h2>Name: {res.name}</h2>
-          <p>Role: {res.role}</p>
-          <p>Party: {res.party}</p>
-          {this.renderFollowBtn(officialMemberId)}
-        </li>
-      );
-    });
-  }
-
   render() {
     return (
 			<div className='search-results'>
-        {this.renderSearchResultDetails()}
+        <RepIndex
+          searchResults={this.state.searchResults}
+          renderFollowBtn={this.renderFollowBtn}
+          />
   		</div>
     );
   }
