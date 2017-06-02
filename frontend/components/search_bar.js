@@ -20,10 +20,12 @@ class SearchBar extends React.Component {
   }
 
   update(searchType, searchField) {
-    let newSearchCriteria = Object.assign(this.state[searchType], {[searchField]: searchField});
-    return e => this.setState({
-      [searchType]: newSearchCriteria
-  });
+    return e => {
+      let newSearchCriteria = Object.assign(this.state[searchType], {[searchField]: e.currentTarget.value});
+      this.setState({
+        [searchType]: newSearchCriteria
+      });
+    };
   }
 
   renderStateAbbrevOptions(){
