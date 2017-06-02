@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
       findHouseRepByLocationSearchCriteria: {
         streetAddress: '',
         stateAbbrev: '',
-        zipCode: ''
+        cityName: ''
       }
     };
     this.update = this.update.bind(this);
@@ -79,9 +79,9 @@ class SearchBar extends React.Component {
 
           <input
             type='text'
-            value={this.state.findHouseRepByLocationSearchCriteria.zipCode}
-            onChange={this.update('findHouseRepByLocationSearchCriteria', 'zipCode')}
-            placeholder='zipCode' />
+            value={this.state.findHouseRepByLocationSearchCriteria.cityName}
+            onChange={this.update('findHouseRepByLocationSearchCriteria', 'cityName')}
+            placeholder='cityName' />
 
           <button>
             <i className="fa fa-search" aria-hidden="true"></i>search

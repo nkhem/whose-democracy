@@ -15,7 +15,7 @@ class SearchSection extends React.Component {
     super(props);
 
     this.state = {
-      searchResults: [],
+      searchResults: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

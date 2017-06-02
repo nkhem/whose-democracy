@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
     resource :bill
     resource :users_bill
+
+    resource :smarty_streets, only: [:show]
   end
 end
