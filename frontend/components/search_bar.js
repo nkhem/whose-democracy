@@ -20,8 +20,9 @@ class SearchBar extends React.Component {
   }
 
   update(searchType, searchField) {
+    let newSearchCriteria = Object.assign(this.state[searchType], {[searchField]: searchField});
     return e => this.setState({
-      [searchType]: { [searchField]: e.currentTarget.value }
+      [searchType]: newSearchCriteria
   });
   }
 
@@ -45,22 +46,41 @@ class SearchBar extends React.Component {
         <h3>Find Senator by state abbrev</h3>
         <form onSubmit={ e => this.props.handleSubmit('findSenatorsByLocationSearchCriteria', this.state.findSenatorsByLocationSearchCriteria)(e) }>
 
-        <select value={this.state.stateAbbrev} onChange={this.update('findSenatorsByLocationSearchCriteria', 'stateAbbrev')}>
-          <option value=''>--</option>
-          {this.renderStateAbbrevOptions()}
-        </select>
+          <select
+            value={this.state.findSenatorsByLocationSearchCriteria.stateAbbrev}
+            onChange={this.update('findSenatorsByLocationSearchCriteria', 'stateAbbrev')}
+            >
+            <option value=''>--</option>
+            {this.renderStateAbbrevOptions()}
+          </select>
+
           <button>
             <i className="fa fa-search" aria-hidden="true"></i>search
           </button>
         </form>
 
         <h3>Find HouseRep by address</h3>
-        <form onSubmit={ e => this.props.handleSubmit(this.state.stateAbbrev)(e) }>
+        <form onSubmit={ e => this.props.handleSubmit('findHouseRepByLocationSearchCriteria', this.state.findHouseRepByLocationSearchCriteria)(e) }>
+          <select
+            value={this.state.findHouseRepByLocationSearchCriteria.stateAbbrev}
+            onChange={this.update('findHouseRepByLocationSearchCriteria', 'stateAbbrev')}
+            >
+            <option value=''>--</option>
+            {this.renderStateAbbrevOptions()}
+          </select>
 
-        <select value={this.state.stateAbbrev} onChange={this.update('findHouseRepByLocationSearchCriteria', 'stateAbbrev')}>
-          <option value=''>--</option>
-          {this.renderStateAbbrevOptions()}
-        </select>
+          <input
+            type='text'
+            value={this.state.findHouseRepByLocationSearchCriteria.streetAddress}
+            onChange={this.update('findHouseRepByLocationSearchCriteria', 'streetAddress')}
+            placeholder='street address' />
+
+          <input
+            type='text'
+            value={this.state.findHouseRepByLocationSearchCriteria.zipCode}
+            onChange={this.update('findHouseRepByLocationSearchCriteria', 'zipCode')}
+            placeholder='zipCode' />
+
           <button>
             <i className="fa fa-search" aria-hidden="true"></i>search
           </button>
