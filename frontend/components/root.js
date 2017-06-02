@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
-import Main from './main';
+import BrowseSection from './browse/browse-section';
 import SessionForm from './session_form';
 
 const Root = ({ store }) => {
@@ -18,7 +18,7 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ Main }/>
+          <IndexRoute component={ BrowseSection }/>
           <Route path="login" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
           <Route path="signup" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
         </Route>

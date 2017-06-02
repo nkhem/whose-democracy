@@ -10,7 +10,7 @@ import Header from './header/header';
 import SearchBar from './search_bar';
 import SearchResults from './search_results';
 
-class Main extends React.Component {
+class BrowseSection extends React.Component {
   constructor(props) {
     super(props);
 
@@ -75,4 +75,4 @@ const mapDispatchToProps = (dispatch, state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseSection);

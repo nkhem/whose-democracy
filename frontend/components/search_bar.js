@@ -45,6 +45,18 @@ class SearchBar extends React.Component {
             <i className="fa fa-search" aria-hidden="true"></i>search
           </button>
         </form>
+
+        <h3>Find HouseRep by address</h3>
+        <form onSubmit={ e => this.props.handleSubmit(this.state.searchTerm)(e) }>
+
+        <select value={this.state.searchTerm} onChange={this.update('searchTerm')}>
+          <option value=''>--</option>
+          {this.renderStateAbbrevOptions()}
+        </select>
+          <button>
+            <i className="fa fa-search" aria-hidden="true"></i>search
+          </button>
+        </form>
       </div>
     );
   }
