@@ -1,1 +1,1 @@
-json.partial! 'api/bills/bill', bill: @bill
+json.partial! 'api/smarty_streets/smarty_street_data', smarty_street_data: @smarty_street_data

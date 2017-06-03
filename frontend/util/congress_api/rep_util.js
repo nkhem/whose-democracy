@@ -8,11 +8,14 @@ export const fetchSenatorsByState = (stateAbbrev) => {
   return fetchRepByGeography('senate', stateAbbrev);
 };
 
-export const fetchHouseRepByAddress = (address, stateAbbrev, cityName) => {
+export const fetchHouseRepByAddress = (searchCriteria) => {
   return $.ajax({
       method: 'GET',
       url: '/api/smarty_streets',
-      data: {address, stateAbbrev, cityName}
+      data: {
+        streetAddress: searchCriteria.streetAddress,
+        cityName: searchCriteria.cityName,
+        stateAbbrev: searchCriteria.stateAbbrev}
     }).then( res => {
       console.log(res);
       // fetchRepByGeography('house', stateAbbrev, district);
@@ -38,7 +41,6 @@ export const fetchAllReps = (chamber) => {
 export const fetchRepByGeography = (chamber, stateAbbrev, district) => {
   district = district ? `/${district}` : '';
   let url = `https://api.propublica.org/congress/v1/members/${chamber}/${stateAbbrev}${district}/current.json`
-  console.log('url', url);
   return $.ajax({
       url: url,
       headers: {
