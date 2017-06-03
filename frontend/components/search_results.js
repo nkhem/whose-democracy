@@ -14,7 +14,7 @@ class SearchResults extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    
+
     let shouldRerenderSearchResults = (
       nextProps.searchResults.length !== this.props.searchResults.length || (
         nextProps.searchResults.length > 0 &&
@@ -32,8 +32,6 @@ class SearchResults extends React.Component {
   }
 
   renderFollowBtn(officialMemberId){
-    console.log('inside renderFollowBtn, this.props.followRep', this.props.followRep);
-    console.log('inside renderFollowBtn, officialMemberId', officialMemberId);
     if (this.props.loggedIn) {
       return (
         <button

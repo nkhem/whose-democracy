@@ -93,11 +93,3 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar;
-
-// <input
-//   type="text"
-//   placeholder="Find Senator by state abbrev"
-//   autoComplete="off"
-//   value={this.state.stateAbbrev}
-//    }
-// />
