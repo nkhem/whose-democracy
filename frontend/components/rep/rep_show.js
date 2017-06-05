@@ -28,7 +28,6 @@ class RepShow extends React.Component {
     CongressApiRepUtil
       .fetchIndividualRepRecentPressReleases(this.state.officialMemberId)
       .then( res => {
-        console.log(res.results.slice(0, 10));
         this.setState({
           officialMemberId: this.state.officialMemberId,
           repData: this.state.repData,

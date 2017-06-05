@@ -7,7 +7,6 @@ class PressReleaseIndex extends React.Component {
   }
   renderPressReleaseIndexDetails(pressReleases){
     return pressReleases.map( pressRelease => {
-      console.log('pressReleases.map( pressRelease => :', pressRelease);
       return <PressReleaseIndexDetail
         key={pressRelease.title}
         pressRelease={pressRelease}
@@ -16,7 +15,6 @@ class PressReleaseIndex extends React.Component {
   }
 
   render() {
-    console.log('inside PressReleaseIndex, props:', this.props);
     return (
       <div className='press-release-index'>
         <h2>Press Releases:</h2>
