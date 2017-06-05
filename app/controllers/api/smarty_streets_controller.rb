@@ -34,6 +34,7 @@ class Api::SmartyStreetsController < ApplicationController
     @smarty_street_data = {
       congressional_district: result[0].metadata.congressional_district
     }
+    puts @smarty_street_data
 
     puts "Address is valid. (There is at least one candidate)\n"
     puts "ZIP Code: #{first_candidate.components.zipcode}"
