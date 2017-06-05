@@ -8,6 +8,18 @@ export const fetchSenatorsByState = (stateAbbrev) => {
   return fetchRepByGeography('senate', stateAbbrev);
 };
 
+export const fetchIndividualRepData = (officialMemberId) => {
+  return $.ajax({
+      url: `https://api.propublica.org/congress/v1/members/${officialMemberId}.json`,
+      headers: {
+          'X-API-Key': Env.PROPUBLICA_KEY,
+          'Content-Type':'application/json'
+      },
+      method: 'GET',
+      dataType: 'json',
+    });
+};
+
 export const fetchHouseRepByAddress = (searchCriteria) => {
   return $.ajax({
       method: 'GET',
