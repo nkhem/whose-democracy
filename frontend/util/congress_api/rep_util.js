@@ -20,6 +20,18 @@ export const fetchIndividualRepData = (officialMemberId) => {
     });
 };
 
+export const fetchIndividualRepRecentPressReleases = (officialMemberId) => {
+  return $.ajax({
+      url: `https://api.propublica.org/congress/v1/members/${officialMemberId}/statements/115.json`,
+      headers: {
+          'X-API-Key': Env.PROPUBLICA_KEY,
+          'Content-Type':'application/json'
+      },
+      method: 'GET',
+      dataType: 'json',
+    });
+};
+
 export const fetchHouseRepByAddress = (searchCriteria) => {
   return $.ajax({
       method: 'GET',
