@@ -26,18 +26,14 @@ class SearchSection extends React.Component {
     if (searchType === 'findSenatorsByLocationSearchCriteria') {
       return CongressApiRepUtil.fetchSenatorsByState(searchCriteria.stateAbbrev);
     } else if (searchType === 'findHouseRepByLocationSearchCriteria') {
-      console.log('searchCriteria',searchCriteria);
       return CongressApiRepUtil.fetchHouseRepByAddress(searchCriteria);
     }
   }
 
   handleSubmit(searchType, searchCriteria){
     return e => {
-      console.log('searchType',searchType);
-      console.log('searchCriteria',searchCriteria);
       e.preventDefault();
         return this.fetchSearchResults(searchType, searchCriteria).then( res => {
-          console.log('fetched res:', res);
           this.setState({
             searchResults: res.results
           });

@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import SearchSection from './search_section';
 import SessionForm from './session_form';
+import RepShow from './rep/rep_show';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -21,6 +22,7 @@ const Root = ({ store }) => {
           <IndexRoute component={ SearchSection }/>
           <Route path="login" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
           <Route path="signup" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
+          <Route path="legislator/:officialMemberId" component={ RepShow } />
         </Route>
       </Router>
     </Provider>
