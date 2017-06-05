@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 import PressReleaseIndex from './press_release/press_release_index';
+import VotePositionIndex from './vote_position/vote_position_index';
 import * as CongressApiRepUtil from '../../util/congress_api/rep_util';
 
 class RepShow extends React.Component {
@@ -10,7 +11,8 @@ class RepShow extends React.Component {
     this.state = {
       officialMemberId: props.params.officialMemberId,
       repData: {},
-      pressReleases: []
+      pressReleases: [],
+      votePositions: []
     };
   }
 
@@ -21,7 +23,8 @@ class RepShow extends React.Component {
         this.setState({
           officialMemberId: this.state.officialMemberId,
           repData: res.results[0],
-          pressReleases: this.state.pressReleases
+          pressReleases: this.state.pressReleases,
+          votePositions: this.state.votePositions
         });
       });
 
@@ -31,7 +34,20 @@ class RepShow extends React.Component {
         this.setState({
           officialMemberId: this.state.officialMemberId,
           repData: this.state.repData,
-          pressReleases: res.results.slice(0, 10)
+          pressReleases: res.results.slice(0, 10),
+          votePositions: this.state.votePositions
+        });
+      });
+
+    CongressApiRepUtil
+      .fetchIndividualRepVotePositions(this.state.officialMemberId)
+      .then( res => {
+        console.log(res);
+        this.setState({
+          officialMemberId: this.state.officialMemberId,
+          repData: this.state.repData,
+          pressReleases: this.state.pressReleases,
+          votePositions: res.results[0].votes.slice(0, 10)
         });
       });
   }
@@ -47,6 +63,7 @@ class RepShow extends React.Component {
           <p>votesmart_id: {this.state.repData.votesmart_id}</p>
         </div>
         <PressReleaseIndex pressReleases={this.state.pressReleases} />
+        <VotePositionIndex votePositions={this.state.votePositions} />
       </div>
     );
   }
