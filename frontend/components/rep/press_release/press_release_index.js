@@ -1,5 +1,6 @@
 import React from 'react';
 import PressReleaseIndexDetail from './press_release_index_detail';
+import { Link } from 'react-router';
 
 class PressReleaseIndex extends React.Component {
 
@@ -23,6 +24,7 @@ class PressReleaseIndex extends React.Component {
         <ul>
           {this.renderPressReleaseIndexDetails(this.props.pressReleases)}
         </ul>
+        <Link to="/legislator/${officialMemberId}/press_releases">See all Press Releases</Link>
       </div>
     );
   }
