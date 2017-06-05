@@ -17,8 +17,9 @@ export const fetchHouseRepByAddress = (searchCriteria) => {
         cityName: searchCriteria.cityName,
         stateAbbrev: searchCriteria.stateAbbrev}
     }).then( res => {
-      console.log(res);
-      // fetchRepByGeography('house', stateAbbrev, district);
+      const district = res.congressional_district;
+      const stateAbbrev = searchCriteria.stateAbbrev;
+      return fetchRepByGeography('house', stateAbbrev, district);
     });
 };
 

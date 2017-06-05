@@ -25,26 +25,13 @@ class Api::SmartyStreetsController < ApplicationController
     result = lookup.result
 
     if result.nil?
-      puts 'No candidates. This means the address is not valid.'
+      puts 'No candidates. The address is not valid.'
       return
     end
-
-    first_candidate = result[0]
 
     @smarty_street_data = {
       congressional_district: result[0].metadata.congressional_district
     }
-    puts @smarty_street_data
-
-    puts "Address is valid. (There is at least one candidate)\n"
-    puts "ZIP Code: #{first_candidate.components.zipcode}"
-    puts "County: #{first_candidate.metadata.county_name}"
-    puts "Latitude: #{first_candidate.metadata.latitude}"
-    puts "Longitude: #{first_candidate.metadata.longitude}"
-
-    # congressional_district = result["metadata"]["congressional_district"]
-
-    # puts congressional_district
   end
 
 end
