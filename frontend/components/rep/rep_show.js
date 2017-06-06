@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import PressReleaseIndex from './press_release/press_release_index';
 import VotePositionIndex from './vote_position/vote_position_index';
 import IntroducedBillIndex from './introduced_bill/introduced_bill_index';
+import RepNewsFeed from './rep_news_feed';
 import * as CongressApiRepUtil from '../../util/congress_api/rep_util';
 
 class RepShow extends React.Component {
@@ -64,6 +65,13 @@ class RepShow extends React.Component {
           <p>icpsr_id: {this.state.repData.icpsr_id}</p>
           <p>votesmart_id: {this.state.repData.votesmart_id}</p>
         </div>
+
+        <RepNewsFeed
+          pressReleases={this.state.pressReleases}
+          votePositions={this.state.votePositions}
+          introducedBills={this.state.introducedBills}
+          />
+        
         <PressReleaseIndex pressReleases={this.state.pressReleases} />
         <VotePositionIndex votePositions={this.state.votePositions} />
         <IntroducedBillIndex introducedBills={this.state.introducedBills} />
