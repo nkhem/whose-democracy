@@ -18,55 +18,63 @@ class RepNewsFeed extends React.Component {
 
   componentWillReceiveProps(nextProps){
     let areActivitiesPresent = nextProps.introducedBills[0] && nextProps.pressReleases[0] && nextProps.votePositions[0];
-    let areActivitiesNew = this.props.introducedBills[0] ? nextProps.introducedBills[0].introduced_date !== this.props.introducedBills[0].introduced_date : true; 
+    let areActivitiesNew = this.props.introducedBills[0] ? nextProps.introducedBills[0].introduced_date !== this.props.introducedBills[0].introduced_date : true;
     let shouldUpdate = areActivitiesPresent && areActivitiesNew;
     if (shouldUpdate) {
-      this.sortAllActivitiesByDate();
+      console.log('this.props',this.props);
+      console.log('nextProps',nextProps);
+      console.log('cwrp shouldUpdate:', shouldUpdate);
+      this.sortAllActivitiesByDate(nextProps);
     }
   }
 
-  sortAllActivitiesByDate(){
+  sortAllActivitiesByDate(nextProps){
     let {
       pressReleases,
       votePositions,
       introducedBills
-    } = this.props;
+    } = nextProps;
 
-    let nextState = Object.assign({}, this.pressReleases.concat(votePositions, introducedBills));
-
-    this.setState({
-      allActivitiesSorted: nextState
-    });
+    let nextState = Object.assign({}, { allActivitiesSorted: pressReleases.concat(votePositions, introducedBills)});
+    console.log('nextState',nextState);
+    console.log('this.props',this.props);
+    this.setState(nextState);
   }
 
   renderNewsFeedIndexDetails(){
-    return this.state.allActivitiesSorted.map( activity => {
-      let typeOfActivity;
-      if (activity.question) {
-        typeOfActivity = 'votePosition';
-      } else if (activity.introduced_date){
-        typeOfActivity = 'introducedBill';
-      } else if (activity.statement_type){
-        typeOfActivity = 'pressRelease';
-      }
+    console.log('rendering news feed, this.state.allActivitiesSorted',this.state.allActivitiesSorted);
+    console.log('this.props',this.props);
+    if (this.state.allActivitiesSorted.length > 0) {
+      return this.state.allActivitiesSorted.map( activity => {
+        let typeOfActivity;
+        if (activity.question) {
+          typeOfActivity = 'votePosition';
+        } else if (activity.introduced_date){
+          typeOfActivity = 'introducedBill';
+        } else if (activity.statement_type){
+          typeOfActivity = 'pressRelease';
+        }
 
-      if (typeOfActivity === 'votePosition') {
-        return <VotePositionIndexDetail
+        if (typeOfActivity === 'votePosition') {
+          return <VotePositionIndexDetail
           key={activity.question}
           votePosition={activity}
           />;
-      } else if (typeOfActivity === 'introducedBill') {
-        return <IntroducedBillIndexDetail
+        } else if (typeOfActivity === 'introducedBill') {
+          return <IntroducedBillIndexDetail
           key={activity.number}
           introducedBill={activity}
           />;
-      } else if (typeOfActivity === 'pressRelease') {
-        return <PressReleaseIndexDetail
+        } else if (typeOfActivity === 'pressRelease') {
+          return <PressReleaseIndexDetail
           key={activity.title}
           pressRelease={activity}
           />;
-      }
-    });
+        }
+      });
+    } else {
+      return null;
+    }
   }
 
   render() {

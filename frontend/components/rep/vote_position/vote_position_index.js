@@ -13,7 +13,6 @@ class VotePositionIndex extends React.Component {
   }
 
   render() {
-    console.log('inside VotePositionIndex render, props: ', this.props);
     return (
       <div className='vote-position-index'>
         <h2>Vote Positions:</h2>

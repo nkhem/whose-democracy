@@ -55,7 +55,6 @@ class RepShow extends React.Component {
   }
 
   render() {
-    console.log('this.state', this.state);
     return (
       <div className='rep-show'>
         <div className='rep-show-rep-data'>
@@ -71,7 +70,7 @@ class RepShow extends React.Component {
           votePositions={this.state.votePositions}
           introducedBills={this.state.introducedBills}
           />
-        
+
         <PressReleaseIndex pressReleases={this.state.pressReleases} />
         <VotePositionIndex votePositions={this.state.votePositions} />
         <IntroducedBillIndex introducedBills={this.state.introducedBills} />
