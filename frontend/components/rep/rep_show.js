@@ -12,47 +12,48 @@ class RepShow extends React.Component {
       officialMemberId: props.params.officialMemberId,
       repData: {},
       pressReleases: [],
-      votePositions: []
+      votePositions: [],
+      billsIntroduced: []
     };
   }
 
   componentWillMount() {
-    CongressApiRepUtil
+    let nextState = Object.assign({}, this.state);
+
+    let receiveRepData = CongressApiRepUtil
       .fetchIndividualRepData(this.state.officialMemberId)
       .then( res => {
-        this.setState({
-          officialMemberId: this.state.officialMemberId,
-          repData: res.results[0],
-          pressReleases: this.state.pressReleases,
-          votePositions: this.state.votePositions
-        });
+        Object.assign(nextState, {repData: res.results[0]});
       });
 
-    CongressApiRepUtil
+    let receivePressReleases = CongressApiRepUtil
       .fetchIndividualRepRecentPressReleases(this.state.officialMemberId)
       .then( res => {
-        this.setState({
-          officialMemberId: this.state.officialMemberId,
-          repData: this.state.repData,
-          pressReleases: res.results.slice(0, 10),
-          votePositions: this.state.votePositions
-        });
+        Object.assign(nextState, {pressReleases: res.results.slice(0, 10)});
       });
 
-    CongressApiRepUtil
+    let receiveVotePositions = CongressApiRepUtil
       .fetchIndividualRepVotePositions(this.state.officialMemberId)
       .then( res => {
-        console.log(res);
-        this.setState({
-          officialMemberId: this.state.officialMemberId,
-          repData: this.state.repData,
-          pressReleases: this.state.pressReleases,
-          votePositions: res.results[0].votes.slice(0, 10)
-        });
+        Object.assign(nextState, {votePositions: res.results[0].votes.slice(0, 10)});
       });
+
+    let receiveBillsIntroduced = CongressApiRepUtil
+      .fetchIndividualRepBillsIntroduced(this.state.officialMemberId)
+      .then( res => {
+        Object.assign(nextState, {billsIntroduced: res.results[0].bills.slice(0, 10)});
+      });
+
+    Promise.all([
+      receiveRepData,
+      receivePressReleases,
+      receiveVotePositions,
+      receiveBillsIntroduced
+    ]).then( () => { this.setState(nextState); });
   }
 
   render() {
+    console.log('this.state', this.state);
     return (
       <div className='rep-show'>
         <div className='rep-show-rep-data'>
