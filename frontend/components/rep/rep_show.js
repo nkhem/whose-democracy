@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 
 import PressReleaseIndex from './press_release/press_release_index';
 import VotePositionIndex from './vote_position/vote_position_index';
+import IntroducedBillIndex from './introduced_bill/introduced_bill_index';
 import * as CongressApiRepUtil from '../../util/congress_api/rep_util';
 
 class RepShow extends React.Component {
@@ -13,7 +14,7 @@ class RepShow extends React.Component {
       repData: {},
       pressReleases: [],
       votePositions: [],
-      billsIntroduced: []
+      introducedBills: []
     };
   }
 
@@ -38,17 +39,17 @@ class RepShow extends React.Component {
         Object.assign(nextState, {votePositions: res.results[0].votes.slice(0, 10)});
       });
 
-    let receiveBillsIntroduced = CongressApiRepUtil
-      .fetchIndividualRepBillsIntroduced(this.state.officialMemberId)
+    let receiveIntroducedBills = CongressApiRepUtil
+      .fetchIndividualRepIntroducedBills(this.state.officialMemberId)
       .then( res => {
-        Object.assign(nextState, {billsIntroduced: res.results[0].bills.slice(0, 10)});
+        Object.assign(nextState, {introducedBills: res.results[0].bills.slice(0, 10)});
       });
 
     Promise.all([
       receiveRepData,
       receivePressReleases,
       receiveVotePositions,
-      receiveBillsIntroduced
+      receiveIntroducedBills
     ]).then( () => { this.setState(nextState); });
   }
 
@@ -65,6 +66,7 @@ class RepShow extends React.Component {
         </div>
         <PressReleaseIndex pressReleases={this.state.pressReleases} />
         <VotePositionIndex votePositions={this.state.votePositions} />
+        <IntroducedBillIndex introducedBills={this.state.introducedBills} />
       </div>
     );
   }

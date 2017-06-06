@@ -32,7 +32,7 @@ export const fetchIndividualRepRecentPressReleases = (officialMemberId) => {
     });
 };
 
-export const fetchIndividualRepBillsIntroduced = (officialMemberId) => {
+export const fetchIndividualRepIntroducedBills = (officialMemberId) => {
   return $.ajax({
       url: `https://api.propublica.org/congress/v1/members/${officialMemberId}/bills/introduced.json`,
       headers: {
