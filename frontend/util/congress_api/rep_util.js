@@ -32,6 +32,18 @@ export const fetchIndividualRepRecentPressReleases = (officialMemberId) => {
     });
 };
 
+export const fetchIndividualRepRecentBills = (officialMemberId) => {
+  return $.ajax({
+      url: `https://api.propublica.org/congress/v1/members/${officialMemberId}/bills/introduced.json`,
+      headers: {
+          'X-API-Key': Env.PROPUBLICA_KEY,
+          'Content-Type':'application/json'
+      },
+      method: 'GET',
+      dataType: 'json',
+    });
+};
+
 export const fetchIndividualRepVotePositions = (officialMemberId) => {
   return $.ajax({
       url: `https://api.propublica.org/congress/v1/members/${officialMemberId}/votes.json`,
