@@ -18,7 +18,7 @@ class IntroducedBillIndex extends React.Component {
 
   render() {
     return (
-      <div className='press-release-index'>
+      <div className='introduced-bill-index'>
         <h2>Bills Introduced:</h2>
         <ul>
           {this.renderIntroducedBillIndexDetails(this.props.introducedBills)}

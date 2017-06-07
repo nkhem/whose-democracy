@@ -32,7 +32,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
-    "opensecrets-client": "^1.0.0",
     "propublica-congress-node": "^0.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

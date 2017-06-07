@@ -20,10 +20,10 @@ export const fetchIndividualRepData = (officialMemberId) => {
     });
 };
 
-export const fetchIndividualRepTopOrgContributors = (officialMemberId) => {
+export const fetchIndividualRepTopContributors = (crpId) => {
   return $.ajax({
     method: 'GET',
-    url: https:`//www.opensecrets.org/api/?method=candContrib&cid=N00007360&output=json&apikey=${Env.OPENSECRETS_API_KEY}`,
+    url: `https://www.opensecrets.org/api/?method=candContrib&cid=${crpId}&output=json&apikey=${Env.OPENSECRETS_API_KEY}`,
   });
 };
 

@@ -44,7 +44,6 @@ class RepNewsFeed extends React.Component {
     // set state
     let nextState = Object.assign({}, { allActivitiesSorted: allActivitiesSorted});
     this.setState(nextState);
-    console.log(allActivitiesSorted);
   }
 
   renderNewsFeedIndexDetails(){
