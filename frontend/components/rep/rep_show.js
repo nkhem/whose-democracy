@@ -85,9 +85,11 @@ class RepShow extends React.Component {
           />
 
         <TopContributorIndex topContributors={this.state.topContributors} />
-        <PressReleaseIndex pressReleases={this.state.pressReleases} />
-        <VotePositionIndex votePositions={this.state.votePositions} />
-        <IntroducedBillIndex introducedBills={this.state.introducedBills} />
+        {
+        // <PressReleaseIndex pressReleases={this.state.pressReleases} />
+        // <VotePositionIndex votePositions={this.state.votePositions} />
+        // <IntroducedBillIndex introducedBills={this.state.introducedBills} />
+        }
       </div>
     );
   }
