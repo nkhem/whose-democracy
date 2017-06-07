@@ -20,30 +20,34 @@ class RepNewsFeed extends React.Component {
     let areActivitiesPresent = nextProps.introducedBills[0] && nextProps.pressReleases[0] && nextProps.votePositions[0];
     let areActivitiesNew = this.props.introducedBills[0] ? nextProps.introducedBills[0].introduced_date !== this.props.introducedBills[0].introduced_date : true;
     let shouldUpdate = areActivitiesPresent && areActivitiesNew;
+
     if (shouldUpdate) {
-      console.log('this.props',this.props);
-      console.log('nextProps',nextProps);
-      console.log('cwrp shouldUpdate:', shouldUpdate);
       this.sortAllActivitiesByDate(nextProps);
     }
   }
 
   sortAllActivitiesByDate(nextProps){
+    // sort activities by date
     let {
       pressReleases,
       votePositions,
       introducedBills
     } = nextProps;
+    let nextActivities = pressReleases.concat(votePositions, introducedBills);
+    let allActivitiesSorted = _.sortBy(nextActivities, (activity) => {
+      let date = activity.date ? activity.date : activity.introduced_date;
+      date.match(/\d+/g).join('');
+      return date;
+    });
+    allActivitiesSorted = _.reverse(allActivitiesSorted);
 
-    let nextState = Object.assign({}, { allActivitiesSorted: pressReleases.concat(votePositions, introducedBills)});
-    console.log('nextState',nextState);
-    console.log('this.props',this.props);
+    // set state
+    let nextState = Object.assign({}, { allActivitiesSorted: allActivitiesSorted});
     this.setState(nextState);
+    console.log(allActivitiesSorted);
   }
 
   renderNewsFeedIndexDetails(){
-    console.log('rendering news feed, this.state.allActivitiesSorted',this.state.allActivitiesSorted);
-    console.log('this.props',this.props);
     if (this.state.allActivitiesSorted.length > 0) {
       return this.state.allActivitiesSorted.map( activity => {
         let typeOfActivity;
@@ -57,16 +61,19 @@ class RepNewsFeed extends React.Component {
 
         if (typeOfActivity === 'votePosition') {
           return <VotePositionIndexDetail
+          className='rep_news_feed_index_detail'
           key={activity.question}
           votePosition={activity}
           />;
         } else if (typeOfActivity === 'introducedBill') {
           return <IntroducedBillIndexDetail
+          className='rep_news_feed_index_detail'
           key={activity.number}
           introducedBill={activity}
           />;
         } else if (typeOfActivity === 'pressRelease') {
           return <PressReleaseIndexDetail
+          className='rep_news_feed_index_detail'
           key={activity.title}
           pressRelease={activity}
           />;
