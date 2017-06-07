@@ -42,7 +42,6 @@ class SearchBar extends React.Component {
   }
 
   render(){
-    // console.log('this.state',this.state);
     return (
       <div className='search-bar' id={this.props.id}>
         <h3>Find Senator by state abbrev</h3>

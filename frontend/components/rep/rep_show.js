@@ -62,14 +62,11 @@ class RepShow extends React.Component {
         .then( res => {
           const topContributors = JSON.parse(res).response.contributors.contributor.map(contributor => contributor['@attributes']);
           Object.assign(nextState, { topContributors: topContributors });
-          console.log('fetching contribution data, this.state:', this.state);
-          console.log('fetching contribution data, topContributors:', topContributors);
         }).then( () => { this.setState(nextState); });
     });
   }
 
   render() {
-    console.log('this.state.topContributors',this.state.topContributors);
     return (
       <div className='rep-show'>
         <div className='rep-show-rep-data'>

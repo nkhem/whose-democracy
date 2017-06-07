@@ -17,7 +17,6 @@ class SelectRepsForm extends React.Component {
 
   componentDidMount(){
     const initialCheckedReps = Object.assign([], this.props.usersReps);
-    //this is where API GET request will go
     this.setState({
       checkedReps: initialCheckedReps
     });
@@ -25,7 +24,6 @@ class SelectRepsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('handlesubmit',this.state);
 		this.props.processSelectRepsForm(this.state);
 	}
 
