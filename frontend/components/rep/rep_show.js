@@ -23,19 +23,13 @@ class RepShow extends React.Component {
 
   componentWillMount() {
     const nextState = Object.assign({}, this.state);
+    let crpId;
 
-    const receiveRepDataAndTopContributors = CongressApiRepUtil
+    const receiveRepData = CongressApiRepUtil
       .fetchIndividualRepData(this.state.officialMemberId)
-      .then( repDataRes => {
-        Object.assign(nextState, {repData: repDataRes.results[0]});
-        const crpId = repDataRes.results[0].crp_id;
-        console.log('crpId',crpId);
-        CongressApiRepUtil
-          .fetchIndividualRepTopContributors(crpId)
-          .then( topContributorsRes => {
-            const topContributors = JSON.parse(topContributorsRes).response.contributors.contributor.map(contributor => contributor['@attributes']);
-            Object.assign(nextState, { topContributors });
-          });
+      .then( res => {
+        Object.assign(nextState, {repData: res.results[0]});
+        crpId = res.results[0].crp_id;
       });
 
     const receivePressReleases = CongressApiRepUtil
@@ -58,15 +52,24 @@ class RepShow extends React.Component {
 
 
     Promise.all([
-      receiveRepDataAndTopContributors,
+      receiveRepData,
       receivePressReleases,
       receiveVotePositions,
       receiveIntroducedBills
-    ]).then( () => { this.setState(nextState); });
+    ]).then(()=> {
+      CongressApiRepUtil
+        .fetchIndividualRepTopContributors(crpId)
+        .then( res => {
+          const topContributors = JSON.parse(res).response.contributors.contributor.map(contributor => contributor['@attributes']);
+          Object.assign(nextState, { topContributors: topContributors });
+          console.log('fetching contribution data, this.state:', this.state);
+          console.log('fetching contribution data, topContributors:', topContributors);
+        }).then( () => { this.setState(nextState); });
+    });
   }
 
   render() {
-    console.log('this.state',this.state);
+    console.log('this.state.topContributors',this.state.topContributors);
     return (
       <div className='rep-show'>
         <div className='rep-show-rep-data'>
