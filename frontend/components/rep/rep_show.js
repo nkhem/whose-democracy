@@ -71,11 +71,8 @@ class RepShow extends React.Component {
       <div className='rep-show'>
         <div className='rep-show-rep-data'>
           <h2>Name: {this.state.repData.first_name} {this.state.repData.last_name}</h2>
-          <p>crp_id: {this.state.repData.crp_id}</p>
-          <p>cspan_id: {this.state.repData.cspan_id}</p>
-          <p>govtrack_id: {this.state.repData.govtrack_id}</p>
-          <p>icpsr_id: {this.state.repData.icpsr_id}</p>
-          <p>votesmart_id: {this.state.repData.votesmart_id}</p>
+          <p>Party: {this.state.repData.current_party}</p>
+          <p>Website: {this.state.repData.url}</p>
         </div>
 
         <RepNewsFeed
