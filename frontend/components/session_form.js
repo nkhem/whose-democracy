@@ -10,13 +10,7 @@ class SessionForm extends React.Component {
     this.state = {
       f_name: '',
       l_name: '',
-      prefix: '',
       email: '',
-      phone_number: '',
-      street_address: '',
-      city: '',
-      state_abbrev: '',
-      zip_code: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,13 +25,7 @@ class SessionForm extends React.Component {
     this.setState({
       f_name: '',
       l_name: '',
-      prefix: '',
       email: '',
-      phone_number: '',
-      street_address: '',
-      city: '',
-      state_abbrev: '',
-      zip_code: '',
       password: ''
     });
 	}
@@ -65,11 +53,6 @@ class SessionForm extends React.Component {
   				<form onSubmit={this.handleSubmit} id="new-session-form">
 
   					<input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.prefix}
-  						onChange={this.update("prefix")}
-              placeholder='prefix' />
-
-  					<input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
   						value={this.state.f_name}
   						onChange={this.update("f_name")}
               placeholder='f_name' />
@@ -78,31 +61,6 @@ class SessionForm extends React.Component {
   						value={this.state.l_name}
   						onChange={this.update("l_name")}
               placeholder='l_name' />
-
-            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.phone_number}
-  						onChange={this.update("phone_number")}
-              placeholder='phone_number' />
-
-            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.street_address}
-  						onChange={this.update("street_address")}
-              placeholder='street_address' />
-
-            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.city}
-  						onChange={this.update("city")}
-              placeholder='city' />
-
-            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.state_abbrev}
-  						onChange={this.update("state_abbrev")}
-              placeholder='state_abbrev' />
-
-            <input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
-  						value={this.state.zip_code}
-  						onChange={this.update("zip_code")}
-              placeholder='zip_code' />
 
             <br/>
 

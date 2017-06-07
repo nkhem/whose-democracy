@@ -3,15 +3,9 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  street_address  :string           not null
-#  city            :string           not null
-#  state_abbrev    :string           not null
-#  zip_code        :integer          not null
 #  f_name          :string           not null
 #  l_name          :string           not null
-#  prefix          :string           not null
 #  email           :string           not null
-#  phone_number    :string           not null
 #  password_digest :string
 #  session_token   :string
 #  created_at      :datetime         not null
