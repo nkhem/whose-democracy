@@ -20,6 +20,13 @@ export const fetchIndividualRepData = (officialMemberId) => {
     });
 };
 
+export const fetchIndividualRepTopOrgContributors = (officialMemberId) => {
+  return $.ajax({
+    method: 'GET',
+    url: https:`//www.opensecrets.org/api/?method=candContrib&cid=N00007360&output=json&apikey=${Env.OPENSECRETS_API_KEY}`,
+  });
+};
+
 export const fetchIndividualRepRecentPressReleases = (officialMemberId) => {
   return $.ajax({
       url: `https://api.propublica.org/congress/v1/members/${officialMemberId}/statements/115.json`,
