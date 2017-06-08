@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from '../actions/user_actions';
 
-const initialState = {}; // user_info: {}
+const initialState = {};
 
 const UserReducer = (state = initialState, action) => {
   Object.freeze(state);
