@@ -14,10 +14,11 @@ const SessionReducer = (state = nullUser, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
+      let currentUserId = action.currentUser ? action.currentUser.id : null;
       nextState = Object.assign(
         {},
         nullUser,
-        { currentUserId: action.currentUser.id }
+        { currentUserId }
       );
       return nextState;
     case RECEIVE_ERRORS:
