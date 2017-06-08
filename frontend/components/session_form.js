@@ -143,11 +143,6 @@ class SessionForm extends React.Component {
               </Link>
             </div>
 
-            <div id='back-to-main' onClick={()=> this.props.router.push("/")}>
-              <span>Back to main  </span>
-              <i className="fa fa-angle-right" aria-hidden="true"></i>
-            </div>
-
   			</div>
       </div>
       </div>
