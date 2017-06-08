@@ -24,6 +24,9 @@ export const fetchIndividualRepTopContributors = (crpId) => {
   return $.ajax({
     method: 'GET',
     url: `https://www.opensecrets.org/api/?method=candContrib&cid=${crpId}&output=json&apikey=${Env.OPENSECRETS_API_KEY}`,
+    xhrFields: {
+      withCredentials: false
+    }
   });
 };
 
