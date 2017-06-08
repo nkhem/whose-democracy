@@ -15,11 +15,18 @@ const Root = ({ store }) => {
     }
   };
 
+  const _redirectUnlessLoggedIn = (nextState, replace) => {
+    const currentUserId = store.getState().session.currentUserId;
+    if (!currentUserId) {
+      replace('/login');
+    }
+  };
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ SearchSection }/>
+          <IndexRoute component={ SearchSection } onEnter={ _redirectUnlessLoggedIn }/>
           <Route path="login" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
           <Route path="signup" component={ SessionForm } onEnter={ _redirectIfLoggedIn } />
           <Route path="legislator/:officialMemberId" component={ RepShow } />
