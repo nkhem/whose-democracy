@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import SessionReducer from './session_reducer';
-import CongressReducer from './congress_reducer';
+import UserReducer from './user_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  user_newsfeed: UserReducer
+  user_info: UserReducer
 });
 
 export default RootReducer;

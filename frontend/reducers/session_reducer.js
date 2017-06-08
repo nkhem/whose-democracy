@@ -3,7 +3,7 @@ import {
   RECEIVE_ERRORS } from '../actions/session_actions';
 
 const nullUser = Object.freeze({
-  currentUser: null,
+  currentUserId: null,
   errors: []
 });
 
@@ -16,7 +16,7 @@ const SessionReducer = (state = nullUser, action) => {
       nextState = Object.assign(
         {},
         nullUser,
-        { currentUser: action.currentUser }
+        { currentUserId: action.currentUser.id }
       );
       return nextState;
     case RECEIVE_ERRORS:

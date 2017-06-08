@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, signup } from '../actions/session_actions';
+import { fetchCurrentUser } from '../actions/user_actions';
 
 import Header from './header/header';
 
@@ -20,7 +21,11 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
 		e.preventDefault();
 		this.props.processForm({user: this.state})
-      .then( () => this.redirectIfLoggedIn() );
+      .then( () => this.redirectIfLoggedIn() )
+      .then( () => {
+        console.log('about to receiveCurrentUser');
+        this.props.fetchCurrentUser();
+      });
 
     this.setState({
       f_name: '',
@@ -89,7 +94,7 @@ class SessionForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: Boolean(state.session.currentUser),
+    loggedIn: Boolean(state.session.currentUserId),
     errors: state.session.errors
   };
 };
@@ -100,6 +105,7 @@ const mapDispatchToProps = (dispatch, state) => {
   const processForm = (formType === 'login') ? login : signup;
 
   return {
+    fetchCurrentUser: user => dispatch(fetchCurrentUser()),
     processForm: user => dispatch(processForm(user)),
     formType: formType
   };

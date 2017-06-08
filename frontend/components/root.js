@@ -9,8 +9,8 @@ import RepShow from './rep/rep_show';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
-    if (currentUser) {
+    const currentUserId = store.getState().session.currentUserId;
+    if (currentUserId) {
       replace('/');
     }
   };

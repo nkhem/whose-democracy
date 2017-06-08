@@ -13,8 +13,10 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:userId])
-    render :show
+    if current_user
+      @user = User.find_by(id: current_user.id)
+      render :show
+    end
   end
 
   def update
