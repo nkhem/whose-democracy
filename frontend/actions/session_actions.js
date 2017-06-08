@@ -3,13 +3,14 @@ import * as UserActions from './user_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const signup = user => dispatch => {
   return ApiUtil.signup(user)
     .then( () => {
       ApiUtil.login(user);
     }, errors => {
-      console.log(errors);
+      dispatch(receiveErrors(errors.responseJSON));
     });
 };
 
@@ -19,7 +20,7 @@ export const login = user => dispatch => {
       dispatch(receiveCurrentUser(userPromise));
       UserActions.refreshCurrentUser();
     }, errors => {
-      console.log(errors);
+      dispatch(receiveErrors(errors.responseJSON));
     } );
 };
 
@@ -28,7 +29,7 @@ export const logout = () => dispatch => {
     .then(() => {
       dispatch(receiveCurrentUser(null));
     }, errors => {
-      console.log(errors);
+      dispatch(receiveErrors(errors.responseJSON));
     });
 };
 
@@ -45,5 +46,11 @@ export const receiveErrors = errors => {
     type: RECEIVE_ERRORS,
     currentUser: null,
     errors: errors
+  };
+};
+
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
   };
 };
