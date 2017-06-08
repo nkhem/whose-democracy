@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+i.fa-github, i.fa-linkedin-square {
+	font-size: 50px;
+  color: black;
+  padding: 4px;
+}
+
+i.fa-github:hover, i.fa-linkedin-square:hover {
+  color: gray;
+}

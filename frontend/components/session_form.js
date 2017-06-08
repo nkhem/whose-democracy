@@ -80,9 +80,9 @@ class SessionForm extends React.Component {
         <Header
           hideSessionBtns={ true }
           loggedIn={this.props.loggedIn} />
-  			<div className='main-content'>
+  			<div className='new-session-form'>
           <h3>{this.props.formType}</h3>
-  				<form onSubmit={this.handleSubmit(asTrueUser)} id="new-session-form">
+  				<form onSubmit={this.handleSubmit(asTrueUser)} >
 
   					<input type={`${this.props.formType === 'login' ? 'hidden': 'text'}`}
   						value={this.state.f_name}

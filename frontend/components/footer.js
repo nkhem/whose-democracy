@@ -5,10 +5,10 @@ class Footer extends React.Component {
     return (
       <div className='footer' id={this.props.id}>
         <a href="https://github.com/nkhem/gulp" target="_blank">
-          <i className="fa fa-github" aria-hidden="true"></i> github
+          <i className="fa fa-github" aria-hidden="true"></i>
         </a>
         <a href="https://www.linkedin.com/in/nkhem/" target="_blank">
-          <i className="fa fa-linkedin-square" aria-hidden="true"></i> linkedin
+          <i className="fa fa-linkedin-square" aria-hidden="true"></i>
         </a>
       </div>
     );

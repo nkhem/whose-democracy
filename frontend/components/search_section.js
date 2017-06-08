@@ -43,19 +43,20 @@ class SearchSection extends React.Component {
 
   render() {
     return (
-      <div id='home' className='main-content'>
+      <div>
         <Header
           loggedIn={this.props.loggedIn}
           logout={ this.props.logout } />
-        <h1>Whose Democracy</h1>
-        <SearchBar
-          handleSubmit={this.handleSubmit}
-        />
-        <SearchResults
-          searchResults={this.state.searchResults}
-          followRep={FollowingUtil.followRep}
-          loggedIn={this.props.loggedIn}
-        />
+        <div className='search-section'>
+          <SearchBar
+            handleSubmit={this.handleSubmit}
+          />
+          <SearchResults
+            searchResults={this.state.searchResults}
+            followRep={FollowingUtil.followRep}
+            loggedIn={this.props.loggedIn}
+          />
+        </div>
       </div>
     );
   }

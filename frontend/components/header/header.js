@@ -20,7 +20,8 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <div id='header'>
+      <div className='header'>
+        <h1>Whose Democracy</h1>
         {this.renderSessionBtns()}
       </div>
     );
