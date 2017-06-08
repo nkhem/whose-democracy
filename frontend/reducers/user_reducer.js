@@ -12,10 +12,10 @@ const UserReducer = (state = initialState, action) => {
       nextState = Object.assign(
         {},
         state,
-        {f_name: action.currentUser.f_name},
-        {l_name: action.currentUser.l_name},
+        {fName: action.currentUser.f_name},
+        {lName: action.currentUser.l_name},
         {email: action.currentUser.email},
-        {rep_followings: action.currentUser.rep_followings}
+        {repFollowings: action.currentUser.rep_followings}
       );
       return nextState;
 

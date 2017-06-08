@@ -1,12 +1,13 @@
 import * as ApiUtil from '../util/session_api_util';
+import * as UserActions from './user_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const signup = user => dispatch => {
   return ApiUtil.signup(user)
-    .then(userPromise => {
-      dispatch(receiveCurrentUser(userPromise));
+    .then( () => {
+      ApiUtil.login(user);
     }, errors => {
       console.log(errors);
     });
@@ -14,11 +15,12 @@ export const signup = user => dispatch => {
 
 export const login = user => dispatch => {
   return ApiUtil.login(user)
-    .then(userPromise => {
+    .then( userPromise => {
       dispatch(receiveCurrentUser(userPromise));
+      UserActions.refreshCurrentUser();
     }, errors => {
       console.log(errors);
-    });
+    } );
 };
 
 export const logout = () => dispatch => {

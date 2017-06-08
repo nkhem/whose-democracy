@@ -5,7 +5,7 @@ import UserReducer from './user_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  user_info: UserReducer
+  currentUser: UserReducer
 });
 
 export default RootReducer;

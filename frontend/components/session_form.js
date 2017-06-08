@@ -21,11 +21,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
 		e.preventDefault();
 		this.props.processForm({user: this.state})
-      .then( () => this.redirectIfLoggedIn() )
-      .then( () => {
-        console.log('about to receiveCurrentUser');
-        this.props.fetchCurrentUser();
-      });
+      .then( () => this.redirectIfLoggedIn() );
 
     this.setState({
       f_name: '',
@@ -105,7 +101,6 @@ const mapDispatchToProps = (dispatch, state) => {
   const processForm = (formType === 'login') ? login : signup;
 
   return {
-    fetchCurrentUser: user => dispatch(fetchCurrentUser()),
     processForm: user => dispatch(processForm(user)),
     formType: formType
   };
