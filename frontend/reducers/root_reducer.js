@@ -5,7 +5,7 @@ import CongressReducer from './congress_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  congress: CongressReducer
+  user_newsfeed: UserReducer
 });
 
 export default RootReducer;
