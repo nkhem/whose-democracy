@@ -7,8 +7,9 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const signup = user => dispatch => {
   return ApiUtil.signup(user)
-    .then( () => {
-      ApiUtil.login(user);
+    .then( userPromise => {
+      dispatch(receiveCurrentUser(userPromise));
+      UserActions.refreshCurrentUser();
     }, errors => {
       dispatch(receiveErrors(errors.responseJSON));
     });

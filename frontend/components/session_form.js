@@ -51,11 +51,7 @@ class SessionForm extends React.Component {
 
   loginAsGuest(){
   return e => {
-    this.props.processForm(
-      {user: {
-        email: 'guest_user@email.com',
-        password: 'guest_user_password'}
-      })
+    this.props.processFormAsGuest()
       .then( () => {
         this.props.clearErrors();
         this.redirectIfLoggedIn();
@@ -162,10 +158,15 @@ const mapDispatchToProps = (dispatch, state) => {
   const pathname = state.location.pathname;
   const formType = (pathname.substring(0,1) === '/') ? pathname.slice(1) : pathname ;
   const processForm = (formType === 'login') ? login : signup;
+  const guestUser = { user: {
+    email: 'guest_user@email.com',
+    password: 'guest_user_password'
+  }};
 
   return {
     clearErrors: () => dispatch(clearErrors()),
     processForm: user => dispatch(processForm(user)),
+    processFormAsGuest: () => dispatch(login(guestUser)),
     formType: formType
   };
 };
