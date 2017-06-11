@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resource :users_bill
 
     resource :smarty_streets, only: [:show]
+    resource :open_secrets, only: [:show]
   end
 end
