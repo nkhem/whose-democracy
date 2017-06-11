@@ -60,7 +60,7 @@ class RepShow extends React.Component {
       CongressApiRepUtil
         .fetchIndividualRepTopContributors(crpId)
         .then( res => {
-          const topContributors = JSON.parse(res).response.contributors.contributor.map(contributor => contributor['@attributes']);
+          const topContributors = res.top_contributors;
           Object.assign(nextState, { topContributors: topContributors });
         }).then( () => { this.setState(nextState); });
     });
