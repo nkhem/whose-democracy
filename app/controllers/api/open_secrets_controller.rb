@@ -4,12 +4,12 @@ require 'pp'
 
 class Api::OpenSecretsController < ApplicationController
   def show
-    cand = OpenSecrets::Candidate.new(ENV["OPENSECRETS_API_KEY"])
-    pp cand.summary({:cid => params[:crpId]})["response"]
     debugger
+    cand = OpenSecrets::Candidate.new(ENV["OPENSECRETS_API_KEY"])
+    result = cand.contributors({:cid => params[:crpId]})["response"]["contributors"]["contributor"]
 
-    # @open_secrets_data = {
-    #   top_contributors: response
-    # }
+    @open_secrets_data = {
+      top_contributors: response
+    }
   end
 end
